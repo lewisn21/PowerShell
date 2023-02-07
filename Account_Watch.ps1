@@ -32,7 +32,7 @@ function Wait-ForChange {
     $user = Get-Content $path
     
     #Write-Host to test, Unlock-ADAccount to unlock
-    Write-Host $users
+    Write-Host $user
     #Unlock-ADAccount -Identity $user
 
     #delete the contents of the users file, save empty file
