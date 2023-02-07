@@ -1,0 +1,35 @@
+View all AD Powershell commands
+get-command -Module ActiveDirectory
+
+Get all computers by name
+Get-ADComputer -filter * | select name
+
+Count all computers in Domain
+Get-ADComputer -filter * | measure
+
+Get all computers with description, full name/OU
+Get-ADComputer -Filter * -Properties Description | Select Name, DistinguishedName, Description
+
+Get a count of computers by OS
+Get-ADComputer -filter "name -like '*'" -properties operatingSystem | group -property operatingSystem | Select Name, Count
+
+Get all Win 10 computers
+Get-ADComputer -filter {OperatingSystem -Like '*Windows 10*'} -property * | select name, description, operatingsystem
+
+Get User creation date (or any other property, use * to get all properties)
+Get-aduser $USER -properties whencreated 
+
+Get disabled user accounts
+Get-ADAccount -AccountDisabled | select name
+
+Get locked out accounts
+Search-ADAccount -LockedOut
+
+Unlock user account
+Unlock-ADAccount -Identity $NAME
+
+Disable user account
+Disable-ADAccount -Identity $NAME
+
+View all GPO commands
+get-command -Module grouppolicy
